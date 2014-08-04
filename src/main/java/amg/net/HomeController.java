@@ -105,13 +105,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/edit", method=RequestMethod.POST)
-	protected String editStudent(Model m, @ModelAttribute Student student) {
-		
-		studentDAO.editStudent(student.getNrAlbumu(), student);
-		m.addAttribute("student", new Student());
-		m.addAttribute("editmessage", "Record has been changed");
-		
-		
+	protected String editStudent(@ModelAttribute("student") @Valid Student student, BindingResult result, ModelMap model) {
+		if (result.hasErrors()) {
+			model.addAttribute("student", student);
+		} else {
+			studentDAO.editStudent(student.getNrAlbumu(), student);
+			model.addAttribute("student", new Student());
+			model.addAttribute("editmessage", "Record has been changed");
+		}
 		return "editstudent";
 	}
 	
@@ -125,19 +126,5 @@ public class HomeController {
 		
 		return "editstudent";
 	}
-	
-//	public boolean isExist(String nrAlbumu) {
-//		//ArrayList<Student> students = (ArrayList<Student>)sm.getAll();
-//		
-//		if (students != null) {
-//			for (Student element : students) {
-//				if(element.getNrAlbumu().equals(nrAlbumu)) {
-//					return true;
-//				}
-//			}
-//		}
-//		return false;
-//	}
-	
-	
+
 }

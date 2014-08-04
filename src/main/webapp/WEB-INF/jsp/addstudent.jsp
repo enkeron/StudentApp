@@ -41,7 +41,11 @@
 		
 		<div class="main" align="center">
 			<h2>Add new Student</h2>
-
+			<div class="green">
+			<c:out value="${message}"></c:out>
+			
+			</div>
+			<br>
 			<form action="addOne" method="POST" class="form">
 				<form:form modelAttribute="student">
 				<div class="label">
@@ -62,26 +66,29 @@
 							<form:input path="surname" id="surnameInput" /><br>
 							<form:errors path="surname" class="error"></form:errors>
 							<br>
-							<label for="adressInput">Adress: </label>
-							<br>
 							
 							<label for="adressInput">City: </label><br>
-							<form:input path="adress.city" id="cityInput" />
+							<form:input path="adress.city" id="cityInput" /><br>
+							<form:errors path="adress.city" class="error"></form:errors>
 							<br>
 							
 							<label for="adressInput">Street: </label><br>
-							<form:input path="adress.street" id="streetInput" />
+							<form:input path="adress.street" id="streetInput" /><br>
+							<form:errors path="adress.street" class="error"></form:errors>
 							<br>
 							
 							<label for="adressInput">House: </label><br>
-							<form:input path="adress.house" id="houseInput" />
+							<form:input path="adress.house" id="houseInput" /><br>
+							<form:errors path="adress.house" class="error"></form:errors>
+							
 							<br>
 							
 							<label for="adressInput">Flat: </label><br>
-							<form:input path="adress.flat" id="flatInput" />
+							<form:input path="adress.flat" id="flatInput" /><br>
+							<form:errors path="adress.flat" class="error"></form:errors>
 							<br>
 							
-						
+							<br>
 							<label for="facultyInput">Faculty: </label>
 							<br>
 								<select id="faculty" name="faculty"
@@ -95,9 +102,9 @@
 							<input type="submit" value="Add this Student">
 					</div>
 				</form:form>
-				<br>
+				
 			</form>
-				<h3><c:out value="${message}"></c:out></h3>
+				
 
 
 

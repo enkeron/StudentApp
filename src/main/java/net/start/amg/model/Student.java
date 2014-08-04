@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
@@ -25,7 +26,7 @@ public class Student {
 	private String name;
 	
 	@Column(name="STUD_SURNAME")
-	@NotEmpty(message = "Username should not be null")
+	@NotEmpty(message = "Surname should not be null")
 	private String surname;
 	
 	@Column(name="STUD_NRALBUM")
@@ -91,11 +92,11 @@ public class Student {
 	
 	public Student() {
 	}
-
+	@NotNull(message = " should not be null")
 	public void setAdress(Adress adress) {
 		this.adress = adress;
 	}
-	
+	@NotNull(message = " should not be null")
 	public Adress getAdress() {
 		return adress;
 	}

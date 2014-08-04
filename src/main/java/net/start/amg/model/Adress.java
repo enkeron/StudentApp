@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
@@ -19,15 +22,21 @@ public class Adress {
 	private Long addressId;
 		
 	@Column(name="ADDR_CITY")
+	@NotEmpty(message = "City should not be empty")
 	private String city;
 	
 	@Column(name="ADDR_STREET")
+	@NotEmpty(message = "Street should not be empty")
 	private String street;
 	
 	@Column(name="ADDR_HOUSE")
+	@NotEmpty(message = "House should not be empty")
+//	@Pattern(regexp="[0-9]", message="Should be only numbers")
 	private String house;
 	
 	@Column(name="ADDR_FLAT")
+	@NotEmpty(message = "Flat should not be empty")
+//	@Pattern(regexp="[0-9]", message="Should be only numbers")
 	private String flat;
 	
 	public Adress(String city, String street, String house, String flat) {

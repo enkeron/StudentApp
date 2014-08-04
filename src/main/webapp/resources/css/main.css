@@ -44,7 +44,7 @@ input[type=submit] active {
 }
 
 input[type=text] {
-	padding: 5px;
+	padding: 3px;
 	border: 2px solid #ccc;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
@@ -69,7 +69,7 @@ input[type=text]:focus {
 }
 
 .error {
-	color: #ff0000;
+	color: #fa4f00;
 	font-size: 12px;
 }
 
@@ -85,6 +85,7 @@ input[type=text]:focus {
 	margin: 10px 40px;
 	float: right;
 }
+
 .editdiv {
 	widows: 300px;
 }
@@ -94,4 +95,8 @@ input[type=text]:focus {
 }
 .label {
 	margin: 0px auto;
+}
+.green {
+	color: #14de28;
+	font-size: 16px;
 }

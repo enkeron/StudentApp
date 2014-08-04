@@ -12,6 +12,7 @@ import net.start.amg.model.Student;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -46,12 +47,16 @@ public class RestOneController {
 		return st;
 	}
 	
-	@RequestMapping(value = "/addstudent", method = RequestMethod.POST, consumes = "application/json")
-	public ModelAndView addStudent(@RequestBody Student student) {
-		studentDAO.addStudent(student);
-		return new ModelAndView("personXmlView", BindingResult.MODEL_KEY_PREFIX
-                + "person", student);
-		//return student;
+	@RequestMapping(value = "/addstudent", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public String addStudent(@RequestBody Student newStudent) {
+		//studentDAO.addStudent(student);
+		String studentName = newStudent.getName();
+		String studentSurname = newStudent.getSurname();
+		
+//		return new ModelAndView("personXmlView", BindingResult.MODEL_KEY_PREFIX
+//                + "person", student);
+		
+		return studentName;
 	}
 	
 	@RequestMapping(value = "/home")
@@ -85,7 +90,7 @@ public class RestOneController {
 			
 			
 //			log.error(student.toStringStudent());
-//			sm.addStudent(student.getName(), student.getSurname(),
+//			sm.addStudent(student.geqtName(), student.getSurname(),
 //					student.getNrAlbumu(), student.getAdress().getAdress(),
 //					student.getFaculty().getFaculty());
 			model.addAttribute("message", "Student has been added");
