@@ -1,5 +1,6 @@
 package amg.net;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +36,6 @@ public class HomeController {
 	
 	@RequestMapping(value = "/home")
     public String home(Model m) {
-//		sm.addStudent("Wej", "prots", "3453", "lodz", "weeia");
 		m.addAttribute("student", new Student());
 		return "addstudent";
     }
@@ -55,15 +55,13 @@ public class HomeController {
     }
 	
 	@RequestMapping(value = "/addOne", method = RequestMethod.POST)
-	protected String addNewStudent(@ModelAttribute("student") @Valid Student student, BindingResult result, ModelMap model) {
+	protected String addNewStudent(@ModelAttribute("student") @Valid Student student, BindingResult result, 
+			ModelMap model, HttpServletRequest request) throws UnsupportedEncodingException {
+		request.setCharacterEncoding("UTF-8");
 		if (result.hasErrors()) {
 			model.addAttribute("student", student);
 		} else {
 			studentDAO.addStudent(student);
-			
-			
-			
-			
 //			log.error(student.toStringStudent());
 //			sm.addStudent(student.getName(), student.getSurname(),
 //					student.getNrAlbumu(), student.getAdress().getAdress(),

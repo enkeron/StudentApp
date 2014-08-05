@@ -30,6 +30,7 @@ public class JDAStudentDAO implements StudentDAO {
 		try {
 			
 			manager.persist(student);
+			
 			if(loggingFlage ) {
 				log.info("add student" + student.toStringStudent());
 			}
@@ -42,10 +43,13 @@ public class JDAStudentDAO implements StudentDAO {
 	public void removeStudent(String nrAlbumu) {
 		log.info(log.getClass() + " Remove from JDAstudentDAO");
 		try {
-			Query query = manager.createQuery("delete Student s where s.nrAlbumu = :nrAlbumu");
-			query.setParameter("nrAlbumu", nrAlbumu);
-			query.executeUpdate();
+//			Query query = manager.createQuery("delete Student s where s.nrAlbumu = :nrAlbumu");
+//			query.setParameter("nrAlbumu", nrAlbumu);
+//			query.executeUpdate(); 
 			
+			Student student = getByNrAlbumu(nrAlbumu);
+			manager.remove(student);
+			manager.flush();
 			if(loggingFlage ) {
 				log.info("Remove student");
 			}
